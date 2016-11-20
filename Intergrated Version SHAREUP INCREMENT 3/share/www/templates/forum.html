@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link rel="manifest" href="../manifest.json">
+
+  <!-- un-comment this code to enable service worker
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.log('Error', err));
+    }
+  </script>-->
+
+  <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+  <link href="css/ionic.app.css" rel="stylesheet">
+  -->
+
+  <!-- ionic/angularjs js -->
+  <script src="../lib/ionic/js/ionic.bundle.js"></script>
+  <script src='../https://www.google.com/recaptcha/api.js'></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
+
+  <script src="../js/ng-cordova.min.js"></script>
+
+  <!-- your app's js -->
+  <script src="../js/forum.js"></script>
+
+  <style type="text/css">
+    .Table {
+      display: table;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .Title {
+      display: table-caption;
+      text-align: center;
+      font-weight: bold;
+      font-size: larger;
+    }
+
+    .Heading {
+      display: table-row;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .Row {
+      display: table-row;
+
+    }
+
+    .Cell {
+      display: table-cell;
+      border-width: thin;
+      padding-left: 5px;
+      padding-right: 5px;
+      background-color: #f1f1f1;
+      text-align: center;
+
+    }
+  </style>
+
+</head>
+
+<body ng-app="forum">
+<ion-view title="Forum" id="forum" padding="true"
+          style="background: url(img/background.jpg) no-repeat center;background-size:cover;">
+  <ion-content ng-controller="forumctrl">
+    <ion-header-bar class="bar-calm">
+      <h1 class="title">Forum</h1>
+    </ion-header-bar>
+    <br>
+    <br>
+    <br>
+    <div class="list list-inset">
+      <label class="item item-input" style="">
+        <input type="text" placeholder="Enter Group Name" ng-model="group_name">
+      </label>
+    </div>
+    <div class="list list-inset">
+      <label class="item item-input" style="">
+        <input type="text" placeholder="Enter message you want to share" ng-model="message">
+      </label>
+    </div>
+
+    <div class="g-recaptcha" data-sitekey="6LcXlgsUAAAAANhuT0REibzsBK2WMsKpyh9fAK3b" style="margin-left:650px"></div>
+    <br>
+
+    <div style="text-align:center;">
+      <button class="button button-calm button-large " style="width:30%;" ng-click="add()">Share</button>
+
+    </div>
+
+    &nbsp;
+
+    <div class="Table">
+      <div class="Heading">
+        &nbsp; &nbsp;
+        <div class="Cell" style="width:10%">ID</div>
+        <div class="Cell" style="width:20%"> Grroup Name</div>
+        <div class="Cell" style="width:100%">Message</div>
+      </div>
+      <div class="Row" ng-repeat="item in alldata">
+        &nbsp; &nbsp;
+        <div class="Cell">{{item.id}}</div>
+        <div class="Cell">{{item.name}}</div>
+        <div class="Cell">{{item.message}}</div>
+      </div>
+    </div>
+    <div class="list list-inset">
+      <label class="item item-input" style="border: ">
+        <input type="number" placeholder="Enter ID of message you want to delete" ng-model="delete_id">
+      </label>
+    </div>
+    <div style="text-align:center;">
+      <button class="button button-calm button-large " style="width:30%;" ng-click="delete()">Delete</button>
+    </div>
+
+  </ion-content>
+</ion-view>
+
+</body>
+
+</html>

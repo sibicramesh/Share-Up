@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+ <meta name="google-signin-client_id" content="938451168278-6jq8r30mrhrb782skpqaj76nalbkpvcu.apps.googleusercontent.com">
+    
+    <script src="https://apis.google.com/js/client:platform.js?onload=renderButton" async defer></script>
+    <script>
+        function onSuccess(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            gapi.client.load('plus', 'v1', function () {
+                var request = gapi.client.plus.people.get({
+                    'userId': 'me'
+                });
+                window.location='home.html';
+            });
+        }
+        function onFailure(error) {
+            alert(error);
+        }
+        function renderButton() {
+            gapi.signin2.render('gSignIn', {
+                'scope': 'profile email',
+                'width': 450,
+                'height': 33,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': onSuccess,
+                'onfailure': onFailure
+            });
+        }
+    </script>
+
+  </head>
+    
+  <body ng-app="starter">
+    <ion-view padding="true" style="background: url(img/background.jpg) no-repeat center;background-size:cover;">
+
+  <ion-content >
+
+<div class="abc">
+ <div class="transbox">
+   <div class="list">
+     <div class="list list-inset">
+       <label class="item item-input" style="border: 3px solid black">
+         <i class=""><img class="username_icon" src="http://zt.liuxue360.com/au/au_studyabroad/images/users.png"></i>
+         <input class="user_inputfield" type="text" placeholder="Username">
+       </label>
+     </div>
+   <div class="list list-inset">
+     <label class="item item-input"  style="border: 3px solid black">
+       <i class=""><img class="password_icon" src="http://findicons.com/files/icons/974/glyphish/24/12_eye.png"></i>
+       <input class="password_inputfield" type="password" placeholder="Password">
+     </label>
+   </div>
+     <div style="text-align:center;">
+       <button  class="button button-dark" style="width:95%;"onclick="location.href='home.html'">
+         Login</button>
+     
+     </div>
+ </div>
+   </div>
+   </div>
+  </ion-content>
+</ion-view>
+
+     <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+      <script src="js/ng-cordova.min.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+      
+    </body>
+    
+</html>
+

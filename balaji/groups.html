@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+      
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+      
+  </head>
+    
+  <body ng-app="start">
+     <ion-view title="Groups" id="groups">
+    <ion-content padding="true" style="background: url(img/background.jpg) no-repeat center;background-size:cover;" >
+        <ion-list id="login-list1">
+                <br><br>
+                <label class="item item-input" id="login-input1">
+                    <span class="input-label" style="color:blue" >Group Name</span><input type="text" placeholder="" id="groupname">
+                </label>
+                <label class="item item-input" id="login-input2">
+                    <span class="input-label" style="color:blue" >Address</span><input type="text" placeholder="" id="address">
+                </label>
+            <br><br>
+            </ion-list>
+        <ion-list id="contacts-lists">
+            <ion-checkbox class="item-avatar-right positive" id="contacts-list-item1" ng-value="'Bharath'" href="mailto:bn4n5@outlook.com">
+                <img src="img/bharath.jpg" align="middle">
+                <h2positive>Bharath Kumar</h2positive>
+            </ion-checkbox>
+            <ion-checkbox class="item-avatar-right positive" id="contacts-list-item2" ng-value="'Sibi'" href="mailto:sibiterrors@gmail.com">
+                <img src="img/sibi.jpg">
+                <h2positive>Sibi</h2positive>
+            </ion-checkbox>
+            <ion-checkbox class="item-avatar-right positive" id="contacts-list-item3"  ng-value="'Balaji'" href="mailto:balaji.natarajan.7@gmail.com">
+                <img src="img/balaji.jpg">
+                <h2positive>Balaji</h2positive>
+                
+            </ion-checkbox>
+            <ion-checkbox class="item-avatar-right positive" id="contacts-list-item4" ng-value="'Nikitha'" href="mailto:nikky422@gmail.com">
+                <img src="img/nikitha.jpg">
+                <h2positive>Nikitha</h2positive>
+            </ion-checkbox>
+            <br><br>
+        </ion-list>
+        <button class="button button-block button-positive" id="create_group">Create Group</button>
+        <button class="button button-block button-positive" id="delete_group">Delete Group</button>
+    </ion-content>
+</ion-view>
+      <script>
+      
+      </script>
+    </body>
+    
+</html>

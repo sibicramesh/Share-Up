@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+      
+
+    <!-- your app's js -->
+    <script src="js/app1.js"></script>
+      
+  </head>
+    
+  <body ng-app="myApp" ng-controller="myCtrl">
+
+<ion-view>
+  <ion-content padding="true" style="background: url(img/background2.jpg) no-repeat center;background-size:cover;" >
+    <ion-list id="login-list1">
+      <br><br>
+      <label class="item item-input" id="login-input1">
+        <span class="input-label" style="color:lig" >Group Name</span><input type="text"  ng-model="data1.group">
+      </label>
+
+      <br><br>
+    </ion-list>
+      <br><br>
+    <ul class="list" ng-repeat="user in gnamename">
+      <li class="item"  >
+     {{user.name}}
+      </li>
+    </ul>
+    <button class="button button-block button-positive" id="create_group" ng-click="getusers()">Get Group Members</button>
+  </ion-content>
+</ion-view>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('myCtrl', function($scope,$http) {
+    $scope.data1={};
+    $scope.gnamename=[];
+    $scope.getusers=function () {
+      var gname=$scope.data1.group;
+      //console.log($scope.data1.group)
+      var name1=$http.get("https://api.mongolab.com/api/1/databases/harry/collections/users?q={\"gname\":\""+gname+"\"}&apiKey=0xCX7-4KL6dGWvAOR5PLzPaC-DtA0KZ4")
+      name1.success(function(data){
+		console.log(data.length)
+        for(var i=0;i<data.length;i++) {
+          $scope.gnamename[i] = {"name": data[i].username};
+        }
+        console.log($scope.gnamename)
+      });
+    }
+	});
+</script>
+</body>
+    
+</html>
