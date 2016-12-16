@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link rel="manifest" href="manifest.json">
+  <script src="https://code.angularjs.org/1.3.0/angular.js"></script>
+  <script src="https://code.angularjs.org/1.3.0/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.3.0/angular-sanitize.js"></script>
+  <script src="https://code.angularjs.org/1.3.0/angular-sanitize.min.js"></script>
+  <script src="../js/grocery.js">// Ionic Starter App
+
+
+
+  </script>
+
+  <!-- un-comment this code to enable service worker
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.log('Error', err));
+    }
+  </script>-->
+
+  <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+  <link href="css/ionic.app.css" rel="stylesheet">
+  -->
+
+  <!-- ionic/angularjs js -->
+  <script src="../lib/ionic/js/ionic.bundle.js"></script>
+
+
+
+
+  <!-- your app's js -->
+
+
+</head>
+
+<body  ng-app="starter">
+<div ng-init="addInput()"></div>
+<ion-view title="Grocery List" id="grocerylist" padding="true";">
+  <ion-content ng-controller="ExampleController">
+    <p>
+    <div style="text-align:center;">
+      <button class="button button-large button-calm" style="width: 30%;" id="startScan" ng-click="getData()">Start Scan</button>
+  </div>
+    <div class="card">
+      <div class="item item-text-wrap">
+        <br><b><font color="blue">Product Name:</font></b>{{name}}
+        <br><b><font color="blue">Product Price:</font></b>{{price}}
+        <br><b><font color="blue">Recent Product Review:</font></b>{{review}}
+      </div></div>
+    <br>
+    <div class="item-input" ng-repeat="input in inputs">
+      <label class="item-input-wrapper" >
+        <input type="text" placeholder="Enter Product Name" ng-model="input.value" />
+
+      </label>
+
+      <button class="button button-small button-calm" ng-if="$index == inputs.length - 1" ng-click="field()">
+        <i class="icon ion-plus"></i>
+      </button>
+      <button class="button button-small button-calm" ng-if="$index != inputs.length - 1" ng-click="removeInput($index)">
+        <i class="icon ion-minus"></i>
+      </button></div>
+    <br>
+    <div style="text-align:center;">
+    <button class="button button-large button-calm" style="width: 30%" ng-click="popUp()">Get Products Price</button>
+    </div>
+  </ion-content>
+</ion-view>
+</body>
+
+</html>

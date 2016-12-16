@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/grocery.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <script src="https://code.angularjs.org/1.3.0/angular.js"></script>
+    <script src="https://code.angularjs.org/1.3.0/angular.min.js"></script>
+    <link href="../css/style.css">
+</head>
+<body ng-app="starter">
+<div ng-controller="ExampleController">
+    <div ng-init="displ()">
+<table >
+    <tr>
+        <th> Name & Quantity</th>
+
+        <th>Price</th>
+    </tr>
+
+<tr>
+
+<td >
+    <div ng-repeat="nam in names">
+    {{nam}}</div>
+</td>
+
+    <td >
+      <div ng-repeat="pri in prices">
+        ${{pri}}</div>
+    </td>
+
+</tr>
+
+
+</table>
+
+</div>
+</div>
+</body>
+</html>

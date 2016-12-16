@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="gg">
+<head>
+  <style>
+    .gg{
+
+      background: url(../img/bg.jpg) no-repeat center;background-size:cover;"
+    }
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link rel="manifest" href="manifest.json">
+
+  <!-- un-comment this code to enable service worker
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.log('Error', err));
+    }
+  </script>-->
+
+  <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+  <link href="css/ionic.app.css" rel="stylesheet">
+  -->
+
+  <!-- ionic/angularjs js -->
+  <script src="../lib/ionic/js/ionic.bundle.js"></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+  <script src="https://code.angularjs.org/1.3.0/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.3.0/angular-sanitize.js"></script>
+  <script src="https://code.angularjs.org/1.3.0/angular-sanitize.min.js"></script>
+
+
+  <!-- your app's js -->
+  <script src="../js/app.js"></script>
+  <link href="css/style.css" rel="stylesheet">
+
+
+</head>
+<div class="bcde"  >
+<body ng-app="myexp" ng-controller="exCtrl"  >
+<ion-view view-title="Dashboard"  >
+      <div class="item item-divider"  >Expenses and Income</div>
+      <div class="item item-body "  >
+
+
+          <a class="item item-icon-left" href="./index.html#/env">
+            <i class="icon ion-card"></i>
+            Total Income
+            <b><span class="item-note" id="texp">
+
+    </span></b>
+          </a>
+
+          <a class="item item-icon-left" href="./index.html#/inv">
+            <i class="icon ion-cash"></i>
+            Total Expense
+            <b><span class="item-note" id="tinc">
+
+    </span></b>
+          </a>
+
+          <a class="item item-icon-left">
+            <i class="icon ion-social-usd"></i>
+            Balance
+            <b><span class="item-note" id="tbal">
+
+    </span></b>
+          </a>
+
+
+          <a class="item item-icon-left item-icon-right" href="./templates/chart.html">
+            <i class="icon ion-pie-graph"></i>
+            Charts
+            <i class="icon ion-arrow-right-c"></i>
+          </a>
+
+        </div>
+      </div>
+    </div>
+</div>
+</html>
+    <!--<div class="list card">
+      <div class="item item-divider">Balance</div>
+      <div class="item item-body">
+        <div>
+          You ate an apple today!
+        </div>
+      </div>
+
+  </ion-content>
+</ion-view>
+<script>
+  var app = angular.module('myexp', []);
+
+  app.controller('exCtrl', function($scope,$http) {
+
+
+  });
+</script>
+</body>
+
+</html>

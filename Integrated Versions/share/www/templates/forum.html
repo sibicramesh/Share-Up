@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link rel="manifest" href="manifest.json">
+
+  <!-- un-comment this code to enable service worker
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.log('Error', err));
+    }
+  </script>-->
+
+  <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+  <link href="css/ionic.app.css" rel="stylesheet">
+  -->
+
+  <!-- ionic/angularjs js -->
+  <script src="../lib/ionic/js/ionic.bundle.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+
+  <!-- cordova script (this will be a 404 during development) -->
+
+  <script src="../js/ng-cordova.min.js"></script>
+
+  <!-- your app's js -->
+
+  <script>
+    var example=angular.module('forum', ['ionic','ngCordova'])
+    example.controller('forumctrl', function($scope, $http) {
+
+      $scope.add = function() {
+        var group=window.localStorage.getItem("username");
+        $scope.gname=group;
+//        var group=$scope.user_name;
+        var message=$scope.message1;
+        $http({
+          method: 'POST' ,
+          url: 'https://api.mlab.com/api/1/databases/pbdb/collections/forum?apiKey=quJa8qCv_KGUvY5S3Qnf9EDnWzoDvSQA',
+          data: JSON.stringify( {
+            "group":group,"message":message
+          }),
+
+          contentType: "application/json"
+        }).success(function (data) {
+          $scope.forum();
+        })
+
+      }
+
+      $scope.result=[];
+      $scope.forum=function () {
+        var user=window.localStorage.getItem("username");
+          // var user=$scope.user_name;
+        $http.get("https://api.mlab.com/api/1/databases/pbdb/collections/forum?apiKey=quJa8qCv_KGUvY5S3Qnf9EDnWzoDvSQA")
+          .success(function(data){
+            console.log(data.length)
+            for(var i=0;i<data.length;i++) {
+              $scope.result[i] = {"name": data[i].group,"msg":data[i].message};
+            }
+            console.log($scope.result)
+
+          });
+
+      }
+      $scope.forum();
+
+    });
+  </script>
+  <style type="text/css">
+    .Table
+    {
+      display: table;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .Title
+    {
+      display: table-caption;
+      text-align: center;
+      font-weight: bold;
+      font-size: larger;
+    }
+    .Heading
+    {
+      display: table-row;
+      font-weight: bold;
+      text-align: center;
+    }
+    .Row
+    {
+      display: table-row;
+
+    }
+    .Cell
+    {
+      display: table-cell;
+      border: solid;
+      border-width: thin;
+      padding-left: 5px;
+      padding-right: 5px;
+      background-color: #f1f1f1;
+      text-align: center;
+
+    }
+    .id
+    {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  </style>
+
+</head>
+
+<body ng-app="forum">
+<ion-view title="Forum" id="forum" padding="true" style="background: url(../img/bg.jpg) no-repeat center;background-size:cover;">
+  <ion-content ng-controller="forumctrl"  >
+    <ion-header-bar class="bar-calm">
+      <h1 class="title">Forum</h1>
+    </ion-header-bar>
+    <br>
+    <br>
+
+    <div class="list list-inset">
+      <label class="item item-input" style="">
+        <input  type="text" placeholder="Enter message you want to share" ng-model="message1">
+      </label>
+    </div>
+
+
+    <div style="text-align:center;">
+      <button class="button button-calm button-large "  style="width:30%;" ng-click="add()" >Share</button>
+
+    </div>
+    <br>
+
+    <div class="id">
+      <ul class="list" ng-repeat="user in result">
+        <li class="item"  >
+          <b>{{user.name}}</b> {{user.msg}}
+        </li>
+      </ul>
+    </div>
+
+
+  </ion-content>
+</ion-view>
+
+</body>
+
+</html>

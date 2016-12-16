@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="../css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="../lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="../js/ng-cordova.min.js"></script>
+	<script src="../../plugins/cordova-sms-plugin/www/sms.js">
+    <script src="cordova.js"></script>
+
+
+    <!-- your app's js -->
+
+  </head>
+  <body ng-app="starter">
+
+    <ion-pane ng-controller="smsController">
+      <ion-header-bar class="bar-calm">
+        <h1 class="title">Find User</h1>
+      </ion-header-bar>
+
+      <ion-content>
+        <ion-list>
+		<div class="list list-inset">
+       <label class="item item-input" style="">
+         <input  type="text" placeholder="Enter User Name" ng-model="data.username1">
+       </label>
+     </div>
+	 <div style="text-align:center;">
+        <button class="button button-calm button-large "  style="width:30%;" ng-click="find()" >Find</button>
+
+       </div>
+          <br>
+          <ul class="list" style="padding-left: 10px; padding-right: 10px">
+            <li class="item">
+              {{phone}}
+            </li>
+          </ul>
+          <div class="list list-inset">
+            <label class="item item-input" style="">
+              <input  type="text" placeholder="Enter Message" ng-model="sms.message">
+            </label>
+          </div>
+
+
+<div style="text-align: center">
+          <button class="button button-large button-energized" style="width:30%;" ng-click="sendSms()">
+            Send
+          </button>
+</div>
+        </ion-list>
+      </ion-content>
+    </ion-pane>
+    <script>
+      var app = angular.module('starter', ['ionic','ngCordova'])
+
+
+      app.controller('smsController',function($scope,$cordovaSms,$http){
+        $scope.sms={};
+        $scope.data={};
+        $scope.phone="";
+
+        var options = {
+          replaceLineBreaks: false, // true to replace \n by a new line, false by default
+          android: {
+            intent: 'INTENT'  // send SMS with the default SMS app
+            //intent: ''        // send SMS without open any other app
+          }}
+
+        $scope.find=function () {
+          var gname=$scope.data.username1;
+          var user= gname;
+
+          $http.get("https://api.mongolab.com/api/1/databases/harry/collections/users?q={\"username\":\""+user+"\"}&apiKey=0xCX7-4KL6dGWvAOR5PLzPaC-DtA0KZ4")
+            .success(function(data){
+              console.log(data);
+              $scope.phone=data[0].mobile;
+
+              console.log($scope.phone)
+
+            });
+
+        }
+
+        $scope.sendSms=function(){
+          console.log($scope.phone);
+          console.log($scope.sms.message);
+          $cordovaSms
+            .send($scope.phone, $scope.sms.message, options)
+            .then(function() {
+              // Success! SMS was sent
+              console.log('Success');
+            }, function(error) {
+              // An error occurred
+              console.log(error);
+            });//then
+        }//sendSms
+
+      });
+
+    </script>>
+
+  </body>
+</html>

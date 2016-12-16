@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>maps</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvG1scpDSBFT7Is9pS3w_JeWqcCHUgFT8"></script>
+       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvG1scpDSBFT7Is9pS3w_JeWqcCHUgFT8&libraries=places"></script>
+  <script src="cordova.js"></script>
+  <script src="../js/map.js"></script>
+    <script src="../lib/ionic/js/ionic.bundle.js"></script>
+    <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+    <script src="../js/ng-cordova.min.js"></script>
+    <script>
+
+    </script>
+  <style>
+    html, body {
+      height: 100%;
+    }
+      .id
+          {
+              padding-left: 10px;
+              padding-right: 10px;
+          }
+  </style>
+</head>
+<body ng-app="mapsapp">
+<ion-view title="Forum" id="forum" padding="true" style="background: url(../img/bg.jpg) no-repeat center;background-size:cover;">
+
+    <ion-header-bar class="bar-calm">
+    <h1 class="title">Find Stores</h1>
+       </ion-header-bar>
+        <br>
+       <br>
+       <br>
+   <div ng-controller="mapsctrl" style="height:90%; width:100%; overflow : auto; ">
+
+<br>
+
+
+
+  <div id="map" style="height:60%; width:100%;">
+
+  </div>
+       <br>
+        <div class="list list-inset">
+       <label class="item item-input" style="">
+         <input  type="text" id="location" placeholder="Enter Location" ng-model="text1">
+       </label>
+     </div>
+    <div style="text-align:center;">
+        <button class="button button-calm button-large "  style="width:30%;" ng-click="mapg()" >Search</button>
+
+       </div>
+       <!--
+    <div class="id">
+  <div ng-repeat="dis in disp1">
+   <li class="item" >
+    <b>{{dis.Name}}</b>
+    {{dis.Address}}
+      </li>
+      <br>
+  </div>
+
+      </div>
+-->
+    </div>
+
+    </ion-view>
+</body>
+</html>

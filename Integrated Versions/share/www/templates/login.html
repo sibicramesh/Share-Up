@@ -1,0 +1,28 @@
+
+<ion-view view-title="Login"  ng-controllerz="loginCtrl">
+  <ion-header-bar class="bar-calm">
+    <h1 class="title">ShareUp</h1>
+
+    <button class="button button-icon" ng-click="redirectToRegistration()">Register
+      <i class="icon ion-person-add"></i>
+    </button>
+  </ion-header-bar>
+  <ion-content padding="true" class="has-header">
+
+    <form>
+      <label class="item item-input" name="Uname">
+        <span class="input-label">Username</span>
+        <input id="txt_Uname" type="text" placeholder="User Name"ng-model="data.username" >
+      </label>
+      <label class="item item-input" name="Pwd">
+        <span class="input-label">Password</span>
+        <input id="txt_Pwd" type="password" placeholder="Password" ng-model="data.password">
+      </label>
+      <br />
+<div style="text-align: center">
+      <button class="button button-calm button-large button-shape" style="width: 30%" ng-click="login()">Login</button>
+</div>
+    </form>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+    <script src="https://code.angularjs.org/1.3.0/angular.js"></script>
+    <script src="https://code.angularjs.org/1.3.0/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.0/angular-sanitize.js"></script>
+    <script src="https://code.angularjs.org/1.3.0/angular-sanitize.min.js"></script>
+    <script src="../js/grocery.js">// Ionic Starter App
+    </script>
+
+
+    <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <script src="../lib/ionic/js/ionic.bundle.js"></script>
+
+</head>
+
+<body  ng-app="starter">
+<ion-view title="Grocery List" id="grocerylist" padding="true";">
+<ion-header-bar class="bar-calm">
+  <h1 class="title">Grocery List</h1>
+</ion-header-bar>
+<ion-content ng-controller="ExampleController">
+  <br>
+    <ul class="list" ng-repeat="products in result" style="padding-left: 10px;padding-right: 10px;">
+        <li class="item"  >
+            {{products.name}}
+        </li>
+    </ul>
+</ion-content>
+</ion-view>
+</body>
+
+</html>

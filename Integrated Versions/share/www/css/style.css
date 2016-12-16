@@ -1,0 +1,79 @@
+/* Empty. Add your own CSS if you like */
+.scroll-content{
+  background: url("../img/bg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+
+}
+.cde
+{
+
+  background: url("../img/bg.jpg") no-repeat center center fixed;
+}
+.list card
+{
+  background: #11c1f3;
+}
+
+#rcorners1 {
+  border-radius: 25px;
+}
+
+#rcorners2 {
+  border-radius: 25px;
+}
+
+.row
+{
+  padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+  padding-bottom: 350px;
+  text-align: center;
+  color: #11c1f3;
+  background: url(../img/img9.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+div.abc
+{
+  padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+  padding-bottom: 650px;
+  text-align: center;
+  background: url(../img/img9.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+
+div.transbox {
+  margin-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+  margin-bottom: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+  height: 450px;;
+  margin: 30px;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+div.transbox.p
+{
+
+  margin-left: 50px;
+  margin-right: 50px;
+  font-weight: bold;.
+color: #000000;
+}
+table, th, td {
+  border: 1px solid black;
+  width: inherit;
+  height: inherit;
+}
+.popup{
+  width: inherit !important;
+  height: inherit;
+}
+
+
+
+
